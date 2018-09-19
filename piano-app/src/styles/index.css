@@ -1,0 +1,136 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700);
+.icon {
+  cursor: pointer;
+  color: white;
+  opacity: 0.8;
+  font-size: 26px; }
+  .icon:hover {
+    opacity: 1; }
+
+.form-background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(134, 134, 134, 0.4); }
+
+input {
+  font-family: "Roboto Slab", serif;
+  font-size: 14px; }
+  input:focus {
+    outline: none; }
+
+input[type="submit"] {
+  color: white;
+  background-color: #812eff;
+  border: none;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer; }
+
+input {
+  color: white;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 10px 15px;
+  text-align: center; }
+
+.header {
+  background-color: #232526;
+  color: white;
+  text-align: center;
+  line-height: 15vh;
+  font-size: 30px;
+  position: relative; }
+  .header .menu {
+    float: left;
+    padding: 15px; }
+  .header p {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase; }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1; }
+
+.footer {
+  background-color: #232526;
+  flex: 1; }
+
+.sidebar {
+  background-image: #232526;
+  color: white;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden; }
+  .sidebar ul {
+    list-style-type: none; }
+    .sidebar ul li {
+      padding-left: 1.3em;
+      cursor: pointer;
+      margin-bottom: 1em;
+      border-left: white solid 1px; }
+
+.key {
+  cursor: pointer;
+  ry: 2; }
+
+.white-key {
+  fill: url(#white-key-gradient);
+  stroke: silver; }
+  .white-key:hover {
+    fill: url(#white-key-hover-gradient); }
+
+.white-key-pressed {
+  fill: url(#white-key-pressed-gradient); }
+
+.black-key {
+  fill: url(#black-key-gradient); }
+  .black-key:hover {
+    fill: url(#black-key-hover-gradient); }
+
+.black-key-pressed {
+  fill: url(#black-key-pressed-gradient); }
+
+.record-controller .icon {
+  position: absolute;
+  top: 15px;
+  right: 15px; }
+
+.song-displayer {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23b688ff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E"); }
+  .song-displayer .time-indicator {
+    stroke: white;
+    stroke-width: 2; }
+  .song-displayer .note {
+    fill: white;
+    font-size: 28px; }
+
+.song-controller {
+  background-color: #232526;
+  text-align: center;
+  height: 7vh;
+  line-height: 100px; }
+
+.save-song {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: #232526;
+  width: 300px;
+  height: 150px; }
+  .save-song > * {
+    margin: 10px; }

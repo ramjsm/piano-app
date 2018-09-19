@@ -1,0 +1,18 @@
+.header {
+	background-color: #232526;
+	color: white;
+	text-align: center;
+	line-height: 15vh;
+	font-size: 30px;
+	position: relative;
+
+	.menu {
+		float: left;
+		padding: 15px;
+	}
+
+	p {
+		@include reset;
+		text-transform: uppercase;
+	}
+}

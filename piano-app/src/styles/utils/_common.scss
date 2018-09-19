@@ -1,0 +1,80 @@
+.icon {
+	cursor: pointer;
+	color: white;
+	opacity: 0.8;
+	font-size: 26px;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.form-background {
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	top: 0;
+	left: 0;
+	background-color: $form-background;
+}
+
+input {
+	font-family: $roboto-slab;
+	font-size: 14px;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+input[type="submit"] {
+	color: white;
+	background-color: $light-purple;
+	border:none;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 15px 20px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+
+input {
+	color: white;
+	background-color: transparent;
+	border:none;
+	border-bottom: 1px solid $half-white;
+	padding: 10px 15px;
+	text-align: center;
+}
+
+@mixin reset() {
+	margin: 0;
+	padding: 0;
+}
+
+@mixin center-absolute() {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+@mixin flex-column($justify-content:false) {
+	display: flex;
+	flex-direction: column;
+
+	@if $justify-content == "flex-start" {
+		justify-content: center;
+	} @else if $justify-content == "flex-end" {
+		justify-content: flex-end;
+	} @else if $justify-content == "center" {
+		justify-content: center;
+	} @else if $justify-content == "space-between" {
+		justify-content: space-between;
+	} @else if $justify-content == "space-around" {
+		justify-content: space-around;
+		}
+}

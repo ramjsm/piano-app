@@ -1,0 +1,12 @@
+.white-key {
+	fill: url(#white-key-gradient);
+	stroke: silver;
+
+	&:hover {
+		fill: url(#white-key-hover-gradient);
+	}
+}
+
+.white-key-pressed {
+	fill: url(#white-key-pressed-gradient);
+}

@@ -1,0 +1,11 @@
+.black-key {
+	fill: url(#black-key-gradient);
+
+	&:hover {
+		fill: url(#black-key-hover-gradient);
+	}
+}
+
+.black-key-pressed {
+	fill: url(#black-key-pressed-gradient);
+}

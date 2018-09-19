@@ -1,0 +1,17 @@
+.sidebar {
+	background-image: $gray;
+	color: white;
+	height: 100vh;
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	ul {
+		list-style-type: none;
+		li {
+			padding-left: 1.3em;
+			cursor: pointer;
+			margin-bottom: 1em;
+			border-left: white solid 1px;
+		}
+	}
+}

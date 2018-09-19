@@ -1,0 +1,11 @@
+.save-song {
+	@include flex-column(center);
+	@include center-absolute();
+	background-color: $gray;
+	width: 300px;
+	height: 150px;
+
+	& > * {
+		margin: 10px
+	}
+}
