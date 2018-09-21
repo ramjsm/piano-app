@@ -1,6 +1,6 @@
 # Piano app
 
-Piano application that records and play the songs created.
+Piano application that records and plays the songs created.
 
 ## Getting Started
 
