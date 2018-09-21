@@ -1,3 +1,8 @@
+::-webkit-scrollbar-button{ display: none; }
+::-webkit-scrollbar-thumb{ background-color: white; } 
+::-webkit-scrollbar-track{ background-color: $gray; } 
+::-webkit-scrollbar{ width: 2px; }
+
 .icon {
 	cursor: pointer;
 	color: white;
@@ -68,13 +73,13 @@ input {
 
 	@if $justify-content == "flex-start" {
 		justify-content: center;
-	} @else if $justify-content == "flex-end" {
-		justify-content: flex-end;
-	} @else if $justify-content == "center" {
-		justify-content: center;
-	} @else if $justify-content == "space-between" {
-		justify-content: space-between;
-	} @else if $justify-content == "space-around" {
-		justify-content: space-around;
-		}
-}
+		} @else if $justify-content == "flex-end" {
+			justify-content: flex-end;
+			} @else if $justify-content == "center" {
+				justify-content: center;
+				} @else if $justify-content == "space-between" {
+					justify-content: space-between;
+					} @else if $justify-content == "space-around" {
+						justify-content: space-around;
+					}
+				}

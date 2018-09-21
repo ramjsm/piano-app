@@ -7,13 +7,13 @@ export default class Keyboard extends Component {
 	// Props for 88 keys piano keyboard
 	constructor(props) {
     	super(props)
-    	this.audioLibrary = this.getAudioLibrary()
     	this.whiteKeysNumber = 52
     	this.blackKeysNumber = 36
     	this.whiteKeyWidth = 20
     	this.whiteKeyHeight = window.innerHeight * 0.2
     	this.blackKeyWidth = 15
     	this.blackKeyHeight = this.whiteKeyHeight / 2
+    	this.audioLibrary = this.getAudioLibrary()
   	}
 
   	// Create an audio library from the files in /media/grand-piano-mp3-sounds
@@ -24,7 +24,7 @@ export default class Keyboard extends Component {
 	   	const obj = {}
 
 	   	// Rename keys in fetch
-	   	audioLibrary.map((value) => {
+	   	audioLibrary.forEach((value) => {
     		let name = value.substring(value.indexOf("media") + 6, value.indexOf("."))
     		obj[name] = value
   		})
@@ -59,7 +59,16 @@ export default class Keyboard extends Component {
 			note = notes[counter] + octave
 
 			// Apend white key
-			whiteKeys.push(<WhiteKey key={note} note={note} x={i * this.whiteKeyWidth} y={y} url={this.getAudioUrl(note)} handleKeyPressed={this.props.handleKeyPressed} width={this.whiteKeyWidth} height={this.whiteKeyHeight}/>)
+			whiteKeys.push(<WhiteKey key={note} 
+									 note={note} 
+									 x={i * this.whiteKeyWidth} 
+									 y={y}
+									 url={this.getAudioUrl(note)} 
+									 handleKeyPressed={this.props.handleKeyPressed}
+									 isPlaying={this.props.isPlaying}
+									 simulateKeyPressed={this.props.simulateKeyPressed}
+									 width={this.whiteKeyWidth} 
+									 height={this.whiteKeyHeight}/>)
 			counter++
 		}
 
@@ -113,7 +122,16 @@ export default class Keyboard extends Component {
 			}
 
 			// Append black key
-			blackKeys.push(<BlackKey key={note} note={note} x={x} y={y} url={this.getAudioUrl(note)} handleKeyPressed={this.props.handleKeyPressed} width={this.blackKeyWidth} height={this.blackKeyHeight}/>) 
+			blackKeys.push(<BlackKey key={note} 
+									 note={note} 
+									 x={x} 
+									 y={y} 
+									 url={this.getAudioUrl(note)} 
+									 handleKeyPressed={this.props.handleKeyPressed}
+									 simulateKeyPressed={this.props.simulateKeyPressed} 
+									 isPlaying={this.props.isPlaying}
+									 width={this.blackKeyWidth} 
+									 height={this.blackKeyHeight}/>) 
 		}
 
 		return blackKeys
@@ -123,6 +141,7 @@ export default class Keyboard extends Component {
 		const WhiteKeys = this.createWhiteKeys()
 		const BlackKeys = this.createBlackKeys()
 		const viewBox = "0 0 " + this.whiteKeyWidth * this.whiteKeysNumber + " " + this.whiteKeyHeight // Calculate Keyboard's width and height
+		
 		return (
 			<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" className="keyboard" viewBox={viewBox}>
 				<defs>

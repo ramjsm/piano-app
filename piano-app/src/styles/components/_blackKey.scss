@@ -1,3 +1,7 @@
+.black-key, .black-key-pressed {
+	@extend .key;
+}
+
 .black-key {
 	fill: url(#black-key-gradient);
 

@@ -1,3 +1,7 @@
+.white-key, .white-key-pressed {
+	@extend .key;
+}
+
 .white-key {
 	fill: url(#white-key-gradient);
 	stroke: silver;

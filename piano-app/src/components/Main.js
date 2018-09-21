@@ -11,24 +11,34 @@ const client = new ApolloClient({
 	uri: "http://localhost:4000/"
 });
 
-export default class Main extends Component {
 
+export default class Main extends Component {
+	
 	constructor(props) {
     	super(props);
+    	//this.keyPressed = ""
     	this.state = {
     		title: "Welcome :) Load or record a song.",
-    		keyPressed: "",
     		isRecording: false,
     		isPlaying: false,
+    		isSongOver: false,
     		startTime: "",
 			duration: "",
 			keysPlayed: [],
-			showSaveForm: false
+			showSaveForm: false,
+			keyPressed: ""
     	}
+  	}
+
+  	// Simulate a key pressed
+  	handlesimulateKeyPressed = (key) => {
+  		this.setState({keyPressed: key })
   	}
 
   	// Store key pressed in keysPlayed
   	handleKeyPressed = (note) => {
+  		this.setState({keyPressed: note })
+
   		if(this.state.isRecording) {
   			// Serverless version 
   			//this.setState(state => {return {keysPlayed: [...this.state.keysPlayed, {note: note, time: this.getSecondsSinceStart()}]}})
@@ -80,12 +90,28 @@ export default class Main extends Component {
 			keysPlayed: this.state.keysPlayed,
 			duration: this.state.duration
 		})
+
 		this.setState({
 			showSaveForm: false,	// Close save form
-			title: "Song saved! <3 Load or record a song.",
 			startTime: "",
 			keysPlayed: []
 		})	
+	}
+
+	// Stop player if song list is open
+	handleSideBar = () => {
+		if(this.state.isPlaying && !this.props.showSideBar) this.setState({isPlaying: false})
+		this.props.handleSideBar()
+	}
+
+	// Handle song over
+	handleSongOver = () => {
+			this.setState({ isSongOver: true, isPlaying: false})
+	}
+
+	// Handle song reload
+	handleSongReload = () => {
+			this.setState({ isSongOver: false, isPlaying: true})
 	}
 
 	// Get time elapsed since song recording started
@@ -97,7 +123,9 @@ export default class Main extends Component {
   		if ((this.props.song !== prevProps.song)) { //Update title in header and notes in display
  			this.setState({
  				keysPlayed: this.props.song.keysPlayed,
- 				title: this.props.song.title
+ 				title: this.props.song.title,
+ 				isSongOver: false,
+ 				isPlaying: false,
  			})
   		}
 	}
@@ -105,9 +133,9 @@ export default class Main extends Component {
 	render() {
 		return (
 			<div className='main'>
-				<Header handleSideBar={this.props.handleSideBar} 
+				<Header handleSideBar={this.handleSideBar} 
 						handleSaveSong={this.props.handleSaveSong} 
-						keyPressed={this.state.keyPressed} 
+						keyPressed={this.keyPressed} 
 						handleRecord={this.handleRecord} 
 						isRecording={this.state.isRecording}
 						isPlaying={this.state.isPlaying}
@@ -115,14 +143,18 @@ export default class Main extends Component {
 						showSideBar={this.props.showSideBar}
 						/>
 
-	        	<Keyboard handleKeyPressed={this.handleKeyPressed}/>
+	        	<Keyboard handleKeyPressed={this.handleKeyPressed} simulateKeyPressed={this.state.keyPressed} isPlaying={this.state.isPlaying} />
 	        	
 	        	<Song keysPlayed={this.state.keysPlayed}
 	        		  handlePlayer={this.handlePlayer}
 	        		  isRecording={this.state.isRecording}
 	        		  isPlaying={this.state.isPlaying}
+	        		  isSongOver={this.state.isSongOver}
 	        		  song={this.props.song}
-	        		  getSecondsSinceStart={this.getSecondsSinceStart}/>
+	        		  getSecondsSinceStart={this.getSecondsSinceStart}
+	        		  simulateKeyPressed={this.handlesimulateKeyPressed}
+	        		  handleSongOver={this.handleSongOver}
+	        		  handleSongReload={this.handleSongReload} />
 
 		        	{ this.state.showSaveForm ?
 						<SaveSongForm handleSaveSong={this.handleSaveSong}/> : null

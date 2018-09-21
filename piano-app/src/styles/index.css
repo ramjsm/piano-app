@@ -1,4 +1,16 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700);
+::-webkit-scrollbar-button {
+  display: none; }
+
+::-webkit-scrollbar-thumb {
+  background-color: white; }
+
+::-webkit-scrollbar-track {
+  background-color: #232526; }
+
+::-webkit-scrollbar {
+  width: 2px; }
+
 .icon {
   cursor: pointer;
   color: white;
@@ -58,6 +70,7 @@ input {
 .main {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   flex: 1; }
 
 .footer {
@@ -65,9 +78,8 @@ input {
   flex: 1; }
 
 .sidebar {
-  background-image: #232526;
   color: white;
-  height: 100vh;
+  height: 96vh;
   overflow-y: auto;
   overflow-x: hidden; }
   .sidebar ul {
@@ -78,7 +90,7 @@ input {
       margin-bottom: 1em;
       border-left: white solid 1px; }
 
-.key {
+.key, .white-key, .white-key-pressed, .black-key, .black-key-pressed {
   cursor: pointer;
   ry: 2; }
 
@@ -106,9 +118,12 @@ input {
 
 .song-displayer {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23b688ff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E"); }
+  .song-displayer .time-indicator, .song-displayer .time-indicator-playing {
+    stroke-width: 3; }
   .song-displayer .time-indicator {
-    stroke: white;
-    stroke-width: 2; }
+    stroke: white; }
+  .song-displayer .time-indicator-playing {
+    stroke: #6ac775; }
   .song-displayer .note {
     fill: white;
     font-size: 28px; }

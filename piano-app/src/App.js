@@ -42,7 +42,7 @@ class App extends Component {
 
 			`
 		})
-		.then(result => this.setState({storedSongs: result.data.songs}));
+		.then(result => this.setState({storedSongs: result.data.songs}))
 	}
 
 	// Toogle sidebar
@@ -66,12 +66,15 @@ class App extends Component {
   				`,
 
   			})
-  			.then(result => this.setState(state => {return {storedSongs: [...state.storedSongs, newSong]}}))
+  			.then(result => this.setState(state => {return {
+  				storedSongs: [...state.storedSongs, newSong],
+  				song: newSong
+  			}}))
 	}
 
 	// Load a song
 	handleLoadSong = (id) => {
-		this.setState({song: this.state.storedSongs.find(song => {return song.id == id})})
+		this.setState({song: this.state.storedSongs.find(song => {return song.id === id})})
 	}
 
 	componentDidMount() {

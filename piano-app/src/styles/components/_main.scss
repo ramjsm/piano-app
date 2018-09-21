@@ -1,4 +1,5 @@
 .main {
 	@include flex-column();
+	overflow: hidden;
 	flex: 1;
 }
