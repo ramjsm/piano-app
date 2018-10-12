@@ -66,14 +66,19 @@ class App extends Component {
   				`,
 
   			})
-  			.then(result => this.setState(state => {return {
-  				storedSongs: [...state.storedSongs, newSong],
-  				song: newSong
-  			}}))
+  			.then(result => this.setState(state => {
+  				newSong.id = result.data.addSong.id // Append song id from server
+   				return {
+  					storedSongs: [...state.storedSongs, newSong],
+  					song: newSong
+  				}
+  			}))
 	}
 
 	// Load a song
 	handleLoadSong = (id) => {
+		console.log("hola")
+		console.log()
 		this.setState({song: this.state.storedSongs.find(song => {return song.id === id})})
 	}
 
